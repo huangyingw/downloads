@@ -1,0 +1,28 @@
+import heapq
+
+
+class Solution(object):
+    def mergeKLists(self, lists):
+        if not lists:
+            return []
+
+        dummy = ListNode(None)
+        nav = dummy
+        heap = []
+
+        for li in lists:
+            if li:
+                heapq.heappush(heap, (li.val, li))
+
+        while heap:
+            smallest = heapq.heappop(heap)[1]
+            print('smallest --> 1 %s' % smallest.val)
+            nav.next = smallest
+            nav = nav.next
+            smallest = smallest.next
+
+            if smallest:
+                print('smallest --> 2 %s' % smallest.val)
+                heapq.heappush(heap, (smallest.val, smallest))
+        return dummy.next
+
