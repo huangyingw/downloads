@@ -1,0 +1,10 @@
+class Solution:
+    def fib(self, N):
+        if N < 2:
+            return N
+        l = [0, 1]
+        for i in range(2, N + 1):
+            l.append(l[i - 1] + l[i - 2])
+            print("l --> %s" % l)
+        return l[N]
+
